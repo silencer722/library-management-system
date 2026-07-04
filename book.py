@@ -1,7 +1,7 @@
 class Book:
     def __init__(self, title, author, year):
-        self.title = title
-        self.author = author
+        self.title = title.strip().title()
+        self.author = author.strip().title()
         self.year = year
         self.available = True
 
@@ -10,6 +10,7 @@ class Book:
             return f"{self.title} - {self.author} - {self.year} - ✅ Available"
         else:
             return f"{self.title} - {self.author} - {self.year} - ❌ Borrowed"
+
     def __repr__(self):
         return f"Book('{self.title}', '{self.author}', {self.year})"
 
@@ -17,12 +18,12 @@ class Book:
         if self.available:
             self.available = False
             return True
-        print('Sorry, this book is already borrowed.')
+        print("\n❌ This book is already borrowed.")
         return False
 
     def return_book(self):
         if not self.available:
-            self.available =True
+            self.available = True
             return True
-        print('This book is already in the library.')
+        print("\n❌ This book wasn't borrowed.")
         return False
